@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_own_webpack=self.webpackChunkmy_own_webpack||[]).push([[491],{491:(e,n,t)=>{t.r(n),t.d(n,{default:()=>c});var a=t(294);const c=function(){return a.createElement("p",null,"Another page")}}}]);
