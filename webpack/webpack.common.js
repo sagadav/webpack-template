@@ -3,12 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const paths = require('./paths');
 const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-module.exports = {
+const common = {
   mode: process.env.NODE_ENV,
   entry: paths.entryPath,
   resolve: {
-    modules: ["node_modules", "lib", "src"],
     extensions: ["*", ".js", ".jsx", ".css", ".scss"],
     alias: {
       "lib": paths.lib,
@@ -24,15 +24,6 @@ module.exports = {
           loader: "babel-loader"
         }
       },
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   exclude: /node_modules/,
-      //   loader: "esbuild-loader",
-      //   options: {
-      //     loader: "jsx",
-      //     target: "es2015"
-      //   }
-      // },
     ]
   },
   output: {
@@ -49,4 +40,23 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({ template: paths.template })
   ],
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+      minSize: 0,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendor"
+        },
+      },
+    },
+  }
 };
+
+if (process.env.BUNDLE_ANALYZE) {
+  common.plugins.push(new BundleAnalyzerPlugin());
+}
+
+module.exports = common;

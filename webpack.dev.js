@@ -15,7 +15,7 @@ module.exports = merge(common, {
     historyApiFallback: true
   },
   output: {
-    filename: 'static/js/bundle.js',
+    filename: 'static/js/[name].bundle.js',
     chunkFilename: "static/js/[name].chunk.js"
   },
   module: {
@@ -71,7 +71,7 @@ module.exports = merge(common, {
     })
   ],
   optimization: {
-    minimize: true,
+    minimize: false,
     minimizer: [
       new TerserPlugin({
         terserOptions: {

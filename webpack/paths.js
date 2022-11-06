@@ -9,7 +9,7 @@ const paths = {
   entryPath: path.resolve(rootPath, "src/index.js"),
   src: path.resolve(rootPath, "src"),
   public: path.resolve(rootPath, "public"),
-  lib: path.resolve(rootPath, "lib")
+  lib: path.resolve(rootPath, "src/lib")
 }
 
 module.exports = paths

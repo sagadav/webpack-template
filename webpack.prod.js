@@ -13,6 +13,7 @@ module.exports = merge(common, {
   },
   module: {
     rules: [
+      // css modules
       {
         test: /\.module\.(sa|sc|c)ss$/,
         use: [
@@ -31,6 +32,7 @@ module.exports = merge(common, {
           }
         ],
       },
+      // global css
       {
         test: /\.(sa|sc|c)ss$/i,
         use: [
@@ -55,10 +57,9 @@ module.exports = merge(common, {
       filename: "static/css/[name].[contenthash:8].css",
       chunkFilename: "static/css/[name].[contenthash:8].chunk.css"
     }),
-    new BundleAnalyzerPlugin(),
   ],
   optimization: {
-    usedExports: true,
+    // usedExports: true,
     minimize: true,
     minimizer: [
       new TerserPlugin({

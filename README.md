@@ -1,1 +1,3 @@
-using lodash es reduced the bundle by 5 kb
+custom webpack config
+
+babel, scss, css modules, eslint, prettier, postcss, core-js@3
